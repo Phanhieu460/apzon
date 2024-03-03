@@ -1,7 +1,6 @@
 import {
     Box,
     Button,
-    Divider,
     Flex,
     Input,
     InputGroup,
@@ -13,8 +12,6 @@ import {
     ModalFooter,
     ModalHeader,
     ModalOverlay,
-    Spacer,
-    Stack,
     Table,
     TableContainer,
     Tbody,
@@ -23,7 +20,7 @@ import {
     Th,
     Thead,
     Tr,
-    useToast,
+    useToast
 } from '@chakra-ui/react';
 import { useState } from 'react';
 import purchaseInvoice from '../../apis/purchaseInvoice';
@@ -69,17 +66,6 @@ const DetailAndEditPurchaseInvoice = ({
         const newItems = [...purchaseData.products];
         newItems[index].productPrice = isNaN(value) ? 0 : value;
         newItems[index].total = isNaN(value) ? 0 : value * newItems[index].quantity;
-        setProducts(newItems);
-    };
-    const handleAddRow = () => {
-        const newItems = [...purchaseData.products];
-        newItems.push({
-            productId: '',
-            productName: '',
-            quantity: 0,
-            productPrice: 0,
-            total: 0,
-        });
         setProducts(newItems);
     };
 
@@ -259,7 +245,6 @@ const DetailAndEditPurchaseInvoice = ({
                                             </Tr>
                                         );
                                     })}
-                                    {/* {isEdit && <Button onClick={handleAddRow}>Add</Button>} */}
                                 </Tbody>
                             </Table>
                         </TableContainer>

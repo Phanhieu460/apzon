@@ -41,7 +41,6 @@ const DetailAndEditSaleInvoice = ({
     orderData: any;
     handleGetSaleInvoiceList: any
 }) => {
-    console.log(orderData);
     const toast = useToast()
     const [products, setProducts] = useState<any>();
 

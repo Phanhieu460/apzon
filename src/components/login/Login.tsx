@@ -30,7 +30,6 @@ const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [userName, setUserName] = useState('admin')
     const [password, setPassword] = useState('admin')
-    const location = useLocation()
 
     const handleShowClick = () => setShowPassword(!showPassword);
     const handleChangeUsername = (e: any) => {
@@ -47,7 +46,6 @@ const Login = () => {
                 password
             })
             .then(response => {
-                // setUser(response.data)
                 Cookies.set('authToken', response.data.token, { path: '/' })
                 Cookies.set('refreshToken', response.data.refreshToken, { path: '/' })
                 if (response.data) {
