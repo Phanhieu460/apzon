@@ -11,6 +11,7 @@ import {
     IconButton,
     Spinner,
     useToast,
+    Button,
 } from '@chakra-ui/react';
 import { FaRegEye, FaEyeDropper } from 'react-icons/fa';
 import { useEffect, useState } from 'react';
@@ -18,6 +19,7 @@ import DetailAndEditSaleInvoice from '../components/saleInvoice/DetailAndEditSal
 import saleInvoice from '../apis/saleInvoice';
 import { format } from 'date-fns';
 import { MdDeleteOutline } from 'react-icons/md';
+import Header from '../components/Header';
 
 const ManageSaleInvoice = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -131,8 +133,6 @@ const ManageSaleInvoice = () => {
                             isClosable: true,
                         });
                     });
-
-                // setIsEdit(true)
             }
         } catch (err) {
             toast({
@@ -147,6 +147,7 @@ const ManageSaleInvoice = () => {
 
     return (
         <>
+            <Header />
             <Container maxW={'100%'}>
                 <Heading as='h2' size='xl' textAlign={'center'} px={'8px'}>
                     Quản lý bán hàng
@@ -155,12 +156,12 @@ const ManageSaleInvoice = () => {
                     <Table size={'sm'}>
                         <Tr>
                             <Th>STT</Th>
-                            <Th>Mã đơn hàng</Th>
-                            <Th>Tên đơn hàng</Th>
+                            <Th>Mã khách hàng</Th>
                             <Th>Tên khách hàng</Th>
+                            <Th>Tên đơn hàng</Th>
                             <Th>Ngày chứng từ</Th>
                             <Th>Tổng tiền</Th>
-                            <Th>Hành động</Th>
+                            <Th textAlign={'center'}>Hành động</Th>
                         </Tr>
                         {data.length > 0 && !isLoading && (
                             <Tbody>
@@ -169,8 +170,8 @@ const ManageSaleInvoice = () => {
                                         <Tr>
                                             <Td>{index + 1}</Td>
                                             <Td>{item._id}</Td>
-                                            <Td>{item.orderName}</Td>
                                             <Td>{item.nameCustomer}</Td>
+                                            <Td>{item.orderName}</Td>
                                             <Td>{format(new Date(item.orderDate), 'dd/MM/yyyy')}</Td>
                                             <Td>{item.totalPrice.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' }).replace('₫', ' VND')} </Td>
                                             <Td textAlign={'center'}>

@@ -18,6 +18,7 @@ import { useEffect, useState } from 'react';
 import { MdDeleteOutline } from 'react-icons/md';
 import purchaseInvoice from '../apis/purchaseInvoice';
 import { format } from 'date-fns';
+import Header from '../components/Header';
 
 const ManagePurchaseInvoice = () => {
     const [isOpen, setIsOpen] = useState(false)
@@ -142,6 +143,7 @@ const ManagePurchaseInvoice = () => {
     }
     return (
         <>
+            <Header />
             <Container maxW={'100%'}>
                 <Heading as='h2' size='xl' textAlign={'center'} paddingTop={'8px'}>
                     Quản lý mua hàng
